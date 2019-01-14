@@ -7,5 +7,9 @@ module.exports.PATHS_ALIASES = {
     "@root": path.resolve(rootSrc),
     "@components": path.resolve(`${rootSrc}/components/`),
     "@hocs": path.resolve(`${rootSrc}/hocs/`),
-    "@containers": path.resolve(`${rootSrc}/containers/`)
+    "@containers": path.resolve(`${rootSrc}/containers/`),
+    "@store": path.resolve(`${rootSrc}/store/store`),
+    "@reducers": path.resolve(`${rootSrc}/store/reducers/`),
+    "@actions": path.resolve(`${rootSrc}/store/actions/`),
+    "@styles": path.resolve(`${rootSrc}/assets/css/`)
 }
