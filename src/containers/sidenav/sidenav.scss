@@ -1,0 +1,18 @@
+@import '@styles/_colors.scss';
+
+.sidenav {
+    grid-area: sidenav;
+    background-color: $nav-color;
+    display: flex;
+    flex-flow: column nowrap;
+
+    &__logout {
+        padding: 1rem;
+        color: #666;
+
+        p {
+            display: inline-block;
+            margin-left: 1rem;
+        }
+    }
+}

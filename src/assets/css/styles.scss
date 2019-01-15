@@ -1,19 +1,58 @@
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+@import 'colors';
+
+:global {
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 
-    to {
-        opacity: 1;
+    .fadeIn {
+        animation: fadeIn .2s forwards;
     }
-}
-
-.fadeIn {
-    animation: fadeIn .2s forwards;
 }
 
 * {
     margin: 0;
     padding: 0;
     font-family: 'Mukta', sans-serif;
+    box-sizing: border-box;
 }
+
+body {
+    background-color: $bg-color;
+    width: 100vw;
+    height: 100vh;
+}
+
+.root {
+    height: 100%;
+    width: 100%;
+}
+
+button {
+    background-color: transparent;
+    text-decoration: none;
+    transition: color .3s;
+    color: white;
+    outline: none;
+    border: none;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+        color: $gl-color
+    }
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+@import 'alerts';

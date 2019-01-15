@@ -5,7 +5,6 @@ const spinner = (props) => {
     let spinnerSize = props.spinnerSize ? props.spinnerSize : styles.fullScreen;
 
     const classes = `${styles.Spinner} ${spinnerSize} fadeIn`;
-    console.log(styles);
 
     return (
         <div className={ classes }>

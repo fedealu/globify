@@ -11,5 +11,6 @@ module.exports.PATHS_ALIASES = {
     "@store": path.resolve(`${rootSrc}/store/store`),
     "@reducers": path.resolve(`${rootSrc}/store/reducers/`),
     "@actions": path.resolve(`${rootSrc}/store/actions/`),
-    "@styles": path.resolve(`${rootSrc}/assets/css/`)
+    "@styles": path.resolve(`${rootSrc}/assets/css/`),
+    "@img": path.resolve(`${rootSrc}/assets/img/`),
 }

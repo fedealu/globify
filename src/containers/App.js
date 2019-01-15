@@ -1,9 +1,31 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux'
+
+import Sidenav from '@containers/sidenav/sidenav';
+import ResultsSet from '@containers/resultsSet/resultsSet';
+import AlbumList from '@containers/albumList/albumList';
+import TopBar from '@components/topBar/topBar';
+
+
+import appStyles from './App.scss';
 
 class App extends PureComponent {
     render() {
-        return (<div><h1>hola mundo</h1></div>)
+        return (
+            <div className={ appStyles.App }>
+                <Sidenav />
+                <TopBar />
+                <ResultsSet />
+                <AlbumList />
+            </div>
+        )
     }
 }
 
-export default App;
+const propsMapper = state => {
+    return {
+        player: state.playerReducer
+    }
+}
+
+export default connect( propsMapper )(App);

@@ -1,0 +1,16 @@
+:global {
+    .alert {
+        position: absolute;
+        width: 100%;
+        padding: .5rem;
+        top: 0;
+        left: 0;
+        border: 1px solid;
+    
+        &.error {
+            background-color: rgb(240, 128, 128);
+            border-color: red;
+            color: black;
+        }
+    }
+}

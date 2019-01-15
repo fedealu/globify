@@ -1,0 +1,31 @@
+$xsSize: 20px;
+$mdSize: 60px;
+$lgSize: 150px;
+
+
+.RoundedImg {
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+    }
+
+    &.xs {
+        width: $xsSize;
+        height: $xsSize;
+    }
+
+    &.md {
+        width: $mdSize;
+        height: $mdSize;
+    }
+
+    &.lg {
+        width: $lgSize;
+        height: $lgSize;
+    }
+}

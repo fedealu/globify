@@ -1,0 +1,45 @@
+@import '@styles/_colors.scss';
+@import '@styles/_measures.scss';
+
+.up {
+    &__header {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        padding: $sidenav_padding;
+
+        @media screen and (min-width: 1600px) {
+            flex-flow: row nowrap;
+        }
+
+        &__info {
+            display: flex;
+            flex-flow: column nowrap;
+
+            @media screen and (min-width: 1600px) {
+                margin-left: 1rem;
+            }
+
+            @media screen and (max-width: 1600px) {
+                margin-top: 1rem;
+                p, a {
+                    text-align: center;
+                } 
+            }
+
+            p {
+                font-size: 1rem;
+                color: white;
+                line-height: 1rem;
+            }
+
+            a {
+                line-height: .8rem;
+                margin-top: .2rem;
+                font-size: .8rem;
+                color: #999;
+            }
+        }
+    }
+}

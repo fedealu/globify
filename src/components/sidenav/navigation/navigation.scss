@@ -1,0 +1,51 @@
+@import '@styles/_colors.scss';
+@import '@styles/_measures.scss';
+
+.nav {
+    margin-top: 1rem;
+    flex-grow: 1;
+
+    button {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &::after {
+            opacity: 0;
+            content: '';
+            position: absolute;
+            right: 0;
+            border-right: 5px solid $gl-color;
+            border-top: 5px solid $gl-color;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+            transform: rotate(45deg);
+            transition: opacity .3s;
+        }
+    }
+
+    li {
+        padding: $sidenav_padding;
+        
+        &.selected {
+            background-color: $bg-color;
+            button {
+                color: $gl-color;
+            }   
+        }
+
+        &:hover {
+            button {
+                color: $gl-color;
+            }
+
+            &:not(.selected) {
+                background-color: $bg-color;
+
+                button::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

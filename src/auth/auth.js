@@ -5,6 +5,21 @@ export const AuthModule = (() => {
     const ACC_URL = 'https://accounts.spotify.com/api/';
     let settings = {};
 
+    const ERR_CODES = {
+        access_denied: {
+            err_code: 1,
+            msg: 'Permiso denegado por el usuario'
+        },
+        spoti_error: {
+            err_code: 2,
+            msg: 'Ocurrió un error con la plataforma de Spotify'
+        },
+        request_access: {
+            err_code: 3,
+            msg: 'El usuario nunca dió acceso a la aplicación'
+        }
+    }
+
     const isLoggedIn = () => {
         // Busca en la LS por los access tokens
         const tokenInfo = JSON.parse(localStorage.getItem('token'));
@@ -52,7 +67,16 @@ export const AuthModule = (() => {
                             reject(err);
                         })
                 } else {
-                    reject(erss);
+                    const currURL = new URL(document.URL);
+                    let errCode = currURL.searchParams.get('error');
+                    switch (errCode) {
+                        case 'access_denied':
+                            reject(ERR_CODES.access_denied);
+                            break;
+                        default:
+                            reject(ERR_CODES.request_access);
+                            break;
+                    }
                 }
             }
         })
@@ -74,7 +98,7 @@ export const AuthModule = (() => {
     const authorize = () => {
         const currURL = new URL(document.URL);
         let authCode = currURL.searchParams.get('code');
-        let errCode = currURL.searchParams.get('err');
+        let errCode = currURL.searchParams.get('error');
         if (!authCode) {
             getAuthCode(); // Go to Spotify
         } else {
@@ -95,7 +119,15 @@ export const AuthModule = (() => {
                     });
             } else {
                 return new Promise((resolve, reject) => {
-                    reject(errCode);
+                    switch (errCode) {
+                        case 'access_denied':
+                            reject(ERR_CODES.access_denied);
+                            break;
+                        default:
+                            reject(ERR_CODES.spoti_error);
+                            break;
+                    }
+                    
                 })
             }
         }
@@ -133,7 +165,6 @@ export const AuthModule = (() => {
                                 imgURL: data.images[0] ? data.images[0].url : './assets/img/boy.svg'
                             };
                             localStorage.setItem('user', JSON.stringify(userInfo));
-
                             resolve(userInfo)
                         })
                         .catch(err => err);

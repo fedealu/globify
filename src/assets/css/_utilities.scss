@@ -1,0 +1,6 @@
+@mixin removeDefaults() {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}

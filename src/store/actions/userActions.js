@@ -26,16 +26,26 @@ const userActions = {
         AuthModule.isAuth()
             .then(user => {
                 // Se pasaron los pasos previos de la autorización.
-                dispatch({ type: ACTION_NAMES.userLogin.authorized, payload: { user } })
+                dispatch({ type: ACTION_NAMES.userLogin.authorized, payload: { user } });
             })
             .catch(err => {
                 // Hubo algún error en la autorización.
-                dispatch({ type: ACTION_NAMES.userLogin.failed });
+                if (err.err_code === 1) {
+                    // Usuario negó el acceso a la aplicación
+                    dispatch({ type: ACTION_NAMES.userLogin.rejected, payload: { err } });
+                } else {
+                    // Hubo un error en la API
+                    dispatch({ type: ACTION_NAMES.userLogin.failed, payload: { err } });
+                }
+                
             });
+    },
+
+    logOut: (dispatch, getState) => {
+        console.log('You\'re logging out');
     },
     
     login: (dispatch, getState) => {
-        dispatch({ type: ACTION_NAMES.userLogin.requesting });
         AuthModule.authorize();
     }
 }

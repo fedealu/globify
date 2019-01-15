@@ -2,10 +2,11 @@ import USR_ACTIONS from '@actions/userActions';
 //const USR_ACTIONS = require('@actions/userActions');
 
 const initialState = {
-    user: {
-        isRequesting: false,
-        isLoggedIn: false
-    }
+    isRequesting: false,
+    isLoggedIn: false,
+    isError: false,
+    isRejected: false,
+    user: null
 };
 
 const userReducer = (state = initialState, action) => {
@@ -13,28 +14,33 @@ const userReducer = (state = initialState, action) => {
         case USR_ACTIONS.names.userLogin.failed:
             return {
                 ...state,
-                user: {
-                    ...state.user,
-                    isRequesting: false,
-                    isLoggedIn: false
-                }
+                isError: true,
+                isRequesting: false,
+                err: { ...action.payload.err }
+            }
+
+        case USR_ACTIONS.names.userLogin.rejected:
+            return {
+                ...state,
+                isRejected: true,
+                isRequesting: false,
+                err: { ...action.payload.err }
             }
 
         case USR_ACTIONS.names.userLogin.requesting:
             return {
                 ...state,
-                user: {
-                    isRequesting: true,
-                    isLoggedIn: false
-                }
+                isRequesting: true,
+                isLoggedIn: false,
             }
 
         case USR_ACTIONS.names.userLogin.authorized:
             return {
                 ...state,
+                isRequesting: false,
+                isLoggedIn: true,
                 user: {
-                    isRequesting: false,
-                    isLoggedIn: true
+                    ...action.payload.user
                 }
             }
     }

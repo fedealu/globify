@@ -7,7 +7,7 @@ import combineReducers from '@store';
 
 // Components
 import App from '@containers/App';
-import Auth from '@hocs/Auth.hoc';
+import Auth from '@containers/auth/auth';
 import Spinner from '@components/spinner/spinner';
 
 // General Styles
@@ -18,11 +18,19 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+document.addEventListener('click', (e) => {
+    if (e.target.nodeName === 'A') {
+        e.preventDefault();
+    }
+})
+
+document.querySelector('#root').classList.add(styles.root);
+
 ReactDOM.render(
     <Provider store={ store }>
         <Auth>
             <App />
         </Auth>
     </Provider>,
-    document.getElementById('root')
+    document.querySelector('#root')
 )
