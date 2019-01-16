@@ -6,6 +6,7 @@ const rootSrc = `./src`;
 module.exports.PATHS_ALIASES = {
     "@root": path.resolve(rootSrc),
     "@components": path.resolve(`${rootSrc}/components/`),
+    "@models": path.resolve(`${rootSrc}/models/`),
     "@hocs": path.resolve(`${rootSrc}/hocs/`),
     "@containers": path.resolve(`${rootSrc}/containers/`),
     "@store": path.resolve(`${rootSrc}/store/store`),

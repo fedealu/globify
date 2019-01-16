@@ -6,7 +6,9 @@ const initialState = {
     isFinished: false,
     searchTarget: {
         type: SEARCH_ACTIONS.targets.artists,
-        term: ''
+        term: '',
+        results: '',
+        err: '',
     }
 }
 
@@ -19,7 +21,39 @@ const searchReducer = (state = initialState, action) => {
                     type: action.payload.newTarget
                 }
             }
-            break;
+
+        case SEARCH_ACTIONS.request: // Changed the search term
+            return {
+                ...state,
+                isSearching: true,
+                searchTarget: {
+                    ...state.searchTarget,
+                    term: action.payload.searchTerm
+                }
+            }
+        
+        case SEARCH_ACTIONS.success: // Changed the search term
+            return {
+                ...state,
+                isSearching: false,
+                isFinished: true,
+                searchTarget: {
+                    ...state.searchTarget,
+                    results: action.payload.results
+                }
+            }
+        
+        case SEARCH_ACTIONS.failed: // Changed the search term
+            return {
+                ...state,
+                isError: true,
+                isSearching: false,
+                isFinished: true,
+                searchTarget: {
+                    ...state.searchTarget,
+                    err: action.payload.err
+                }
+            }
     
         default:
             break;

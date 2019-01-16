@@ -1,7 +1,8 @@
 .topbar {
     grid-area: topbar;
+    display: flex;
 
     &__logo {
-        
+        flex-grow: 1;        
     }
 }

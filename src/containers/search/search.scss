@@ -1,8 +1,37 @@
 .search {
     display: flex;
+    align-items: center;
+
+    p {
+        color: #dadada;
+    }
+
+    span {
+        color: #dadada;
+        margin: .5rem
+    }
 
     &__input {
-        background-color: transparent;
-        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #666;
+        transition: border-bottom .3s;
+        position: relative;
+        
+        &.focus {
+            border-bottom: 1px solid #dadada;
+        }
+
+        input {
+            color: white;
+            flex-grow: 1;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding: .3rem;
+            width: 15rem;
+            font-size: 1.1rem;
+        }
     }
 }

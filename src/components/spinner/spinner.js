@@ -3,8 +3,24 @@ import styles from './spinner.scss';
 
 const spinner = (props) => {
     let spinnerSize = props.spinnerSize ? props.spinnerSize : styles.fullScreen;
+    let spinnerPos = props.spinnerPos ? props.spinnerPos : '';
 
-    const classes = `${styles.Spinner} ${spinnerSize} fadeIn`;
+    switch (spinnerSize) {
+        case 'sm':
+            spinnerSize = styles.sm;
+            break;
+    
+        default:
+            break;
+    }
+
+    switch (spinnerPos) {
+        case 'right':
+            spinnerPos = styles.right;
+            break;
+    }
+
+    const classes = `${ styles.Spinner } ${ spinnerSize } ${ spinnerPos } fadeIn`;
 
     return (
         <div className={ classes }>

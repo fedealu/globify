@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Sidenav from '@containers/sidenav/sidenav';
 import ResultsSet from '@containers/resultsSet/resultsSet';
-import AlbumList from '@containers/albumList/albumList';
+import ContentList from '@containers/contentList/contentList';
 import TopBar from '@components/topBar/topBar';
 
 
@@ -16,7 +16,7 @@ class App extends PureComponent {
                 <Sidenav />
                 <TopBar />
                 <ResultsSet />
-                <AlbumList />
+                <ContentList />
             </div>
         )
     }

@@ -142,7 +142,8 @@ export const AuthModule = (() => {
         window.location.replace('https://accounts.spotify.com/authorize' +
             '?response_type=code' +
             '&client_id=' + config.CLIENTID +
-            '&redirect_uri=' + encodeURIComponent(config.REDIRECT_URI));
+            '&redirect_uri=' + encodeURIComponent(config.REDIRECT_URI) +
+            '&scope=' + encodeURIComponent(config.SCOPES));
     }
 
     const getUser = () => {

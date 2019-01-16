@@ -26,7 +26,7 @@ export default (props) => {
 
     return (
         <div className={ classes }>
-            <img src={ img.url } alt={ img.alt || 'Este usuario no tiene imagen de perfil'}/>
+            <img src={ img.url || '@assets/img/artist.jpg' } alt={ img.alt || 'Este usuario no tiene imagen de perfil'}/>
         </div>
     );
 }

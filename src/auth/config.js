@@ -4,5 +4,6 @@ export const config = {
     REDIRECT_URI: 'http://localhost:8080/index.html',
     AUTHORIZE_ID: 'authorize',
     LOGOUT_REDIRECT: 'http://localhost:8080/index.html',
-    LOGOUT_ID: 'logout'
+    LOGOUT_ID: 'logout',
+    SCOPES: 'user-follow-read user-read-email user-read-private'
 }
