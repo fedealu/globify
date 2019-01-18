@@ -93,6 +93,7 @@ export const AuthModule = (() => {
     const logOut = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        Window.location(config.LOGOUT_REDIRECT);
     }
 
     const authorize = () => {

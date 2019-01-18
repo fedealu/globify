@@ -1,4 +1,4 @@
-import USR_ACTIONS from '@actions/userActions';
+import { USER_ACTIONS } from '@actions/userActions';
 //const USR_ACTIONS = require('@actions/userActions');
 
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
     switch ( action.type ) {
-        case USR_ACTIONS.names.userLogin.failed:
+        case USER_ACTIONS.userLogin.failed:
             return {
                 ...state,
                 isError: true,
@@ -19,7 +19,7 @@ const userReducer = (state = initialState, action) => {
                 err: { ...action.payload.err }
             }
 
-        case USR_ACTIONS.names.userLogin.rejected:
+        case USER_ACTIONS.userLogin.rejected:
             return {
                 ...state,
                 isRejected: true,
@@ -27,14 +27,14 @@ const userReducer = (state = initialState, action) => {
                 err: { ...action.payload.err }
             }
 
-        case USR_ACTIONS.names.userLogin.requesting:
+        case USER_ACTIONS.userLogin.requesting:
             return {
                 ...state,
                 isRequesting: true,
                 isLoggedIn: false,
             }
 
-        case USR_ACTIONS.names.userLogin.authorized:
+        case USER_ACTIONS.userLogin.authorized:
             return {
                 ...state,
                 isRequesting: false,

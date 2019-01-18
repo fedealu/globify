@@ -1,12 +1,16 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import SearchActions from '@actions/searchActions';
-import UserActions from '@actions/userActions';
+
+
+import { switchSearchObjective } from '@actions/searchActions';
+import { logOut } from '@actions/userActions';
 
 import sidenavStyles from './sidenav.scss';
 import UserProfile from '@components/sidenav/userProfile/userProfile';
 import Navigation from '@components/sidenav/navigation/navigation';
+
 
 
 class Sidenav extends PureComponent {
@@ -40,11 +44,15 @@ const propsMapper = state => {
     }
 }
 
-const actionsMapper = dispatch => {
-    return {
-        onLogOut: () => UserActions.logOut(dispatch),
-        onNavClick: ( newObj ) => SearchActions.switchSearchObjective(dispatch, newObj)
-    }
-}
+const actionsMapper = dispatch => bindActionCreators(
+        { onLogOut: logOut, onNavClick: switchSearchObjective }, 
+        dispatch
+    )
+// {
+//     return {
+//         onLogOut: () => UserActions.logOut(dispatch),
+//         onNavClick: ( newObj ) => SearchActions.switchSearchObjective(dispatch, newObj)
+//     }
+// }
 
 export default connect(propsMapper, actionsMapper)(Sidenav);

@@ -1,0 +1,95 @@
+@import '@styles/_colors.scss';
+
+.player {
+    padding: 1rem;
+    background-color: $nav-color-hover;
+    color: $link-color;
+    display: flex;
+
+    &__info {
+       width: 35%;
+       display: flex;
+       flex-flow: column nowrap;
+       justify-content: center;
+       color: white;
+       font-size: .8rem;
+
+        &__artist {
+            color: $link-color;
+            font-size: .9em;
+            a {
+                &:last-child:after {
+                    content: '';
+                }
+                
+                &:after {
+                    content: ', ';
+                }
+                margin-right: .2rem;
+            }
+        }
+    }
+
+    &__actions {
+        width: 35%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        &__action {
+            margin-right: 1rem;
+
+            &:hover {
+                cursor: pointer;
+                color: white;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &__handlers {
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .handler {
+            border-radius: 50%;
+            padding: .7rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            box-sizing: content-box;
+
+            &:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
+
+        &_main {
+            $size: 1.5rem;
+            @extend .handler;
+            font-size: 1.7rem;
+            height: $size;
+            width: $size;
+            margin: 0 1rem;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        &_secondary {
+            $size: 1rem;
+            @extend .handler;
+            font-size: $size;
+            height: $size;
+            width: $size;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}

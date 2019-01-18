@@ -1,7 +1,7 @@
 .App {
     display: grid;
-    grid-template-areas: 'sidenav topbar albums' 'sidenav results albums';
-    grid-template-rows: max-content 1fr;
+    grid-template-areas: 'sidenav topbar albums' 'sidenav results albums' 'sidenav player albums';
+    grid-template-rows: max-content 1fr max-content;
     grid-template-columns: .2fr 1fr .5fr;
     height: 100vh;
 

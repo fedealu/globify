@@ -1,6 +1,7 @@
 .topbar {
     grid-area: topbar;
     display: flex;
+    padding: 1rem;
 
     &__logo {
         flex-grow: 1;        

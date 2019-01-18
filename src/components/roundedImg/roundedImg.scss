@@ -1,4 +1,4 @@
-$xsSize: 20px;
+$xsSize: 40px;
 $mdSize: 60px;
 $lgSize: 150px;
 
@@ -16,7 +16,7 @@ $lgSize: 150px;
         width: 100%;
     }
 
-    &.xs {
+    &.sm {
         width: $xsSize;
         height: $xsSize;
     }

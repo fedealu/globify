@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import ArtistList from '@components/resultsSet/ArtistList/artistList';
 
 import resultsStyles from './resultsSet.scss';
 import searchActions, { SEARCH_ACTIONS } from '@actions/searchActions';
-import resultsActions, { RESULT_ACTIONS } from '@actions/resultsActions';
+import { getArtistAlbums, RESULT_ACTIONS } from '@actions/resultsActions';
 
 class ResultsSet extends PureComponent {
   render() {
@@ -32,7 +33,7 @@ class ResultsSet extends PureComponent {
     let resultBuild = '';
     if (results !== '') {
       switch (type) {
-        case SEARCH_ACTIONS.targets.artists:
+        case SEARCH_ACTIONS.targets.search.artist:
             resultBuild = <ArtistList artists={ results.items } click={ onArtistClick } />
             break;
       }  
@@ -61,11 +62,7 @@ const propsMapper = state => {
   }
 }
 
-const actionsMapper = dispatch => {
-  return {
-    onArtistClick: artist => resultsActions.getArtistAlbums(dispatch, artist)
-  }
-}
+const actionsMapper = dispatch => bindActionCreators({ onArtistClick: getArtistAlbums }, dispatch);
 
 export default connect( propsMapper, actionsMapper )(ResultsSet)
 

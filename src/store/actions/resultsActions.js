@@ -12,10 +12,9 @@ export const RESULTS_ACTIONS = {
 
 const spoti = new Spotify();
 
-const resultsActions = {
-    getArtistAlbums: (dispatch, artist) => {
-        console.log('[RESULT_ACTIONS]', artist);
-        dispatch({ type: RESULTS_ACTIONS.getArtistAlbumsRequest, payload: { artist } });
+export const getArtistAlbums = ( artist ) => {
+    return (dispatch) => {
+        dispatch({ type: RESULTS_ACTIONS.getArtistAlbumsRequest, payload: { artist, type: RESULTS_ACTIONS.type.albums } });
         spoti.getArtistAlbums( artist.id )
             .then( albums => {
                 dispatch({ type: RESULTS_ACTIONS.getArtistAlbumsSuccess, payload: { albums } });
@@ -25,5 +24,3 @@ const resultsActions = {
             })
     }
 }
-
-export default resultsActions;

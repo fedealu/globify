@@ -7,20 +7,27 @@ import { SEARCH_ACTIONS } from '@actions/searchActions';
 export default (props) => {
 
     // Map to convert every search target possible to an JSX element
-    const liItems = Object.keys( SEARCH_ACTIONS.targets ).map( (key) => {
-        const target = SEARCH_ACTIONS.targets[ key ];
-        let selected = '';
-        // Determine which item is selected. By default is 'Artist'. This is defined in the SearchReducer
-        if ( props.selected === target) {
-            selected = navStyles.selected;
-        }
-        // Build the HTML component with the data passed
-        return (
-            <li className={ selected } key={ key }>
-                <button alt="Buscar por Artistas" onClick={ () => { props.clickHandler(target) } }>{ capitalize(target) }</button>
-            </li>
-        );
-    })
+    const liItems = Object.keys( SEARCH_ACTIONS.targets.search )
+                        .map( (key) => {
+                            if (key === 'search') {
+                                return;
+                            }
+                            const target = SEARCH_ACTIONS.targets.search[ key ];
+                            let selected = '';
+                            // Determine which item is selected. By default is 'Artist'. This is defined in the SearchReducer
+                            if ( props.selected === target) {
+                                selected = navStyles.selected;
+                            }
+                            // Build the HTML component with the data passed
+                            return (
+                                <li className={ selected } key={ key }>
+                                    <button alt="Buscar por Artistas" onClick={ () => { props.clickHandler(target) } }>{ capitalize(target) }</button>
+                                </li>
+                            );
+                        }).filter( (value) => {
+                            // Remove the search undefined mapped item
+                            return value !== undefined;
+                        })
 
     return (
         <nav className={ navStyles.nav }>

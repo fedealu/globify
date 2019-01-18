@@ -1,3 +1,9 @@
+@import '@styles/_colors.scss';
+
 .container {
     grid-area: albums;
+    position: relative;
+    background-color: $nav_color;
+    color: white;
+    padding: 1rem 0 1rem 0;
 }

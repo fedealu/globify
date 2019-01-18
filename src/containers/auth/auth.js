@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 // Redux user actions
-import usrActions from '@actions/userActions';
+//import usrActions from '@actions/userActions';
+import { logIn, authorize } from '@actions/userActions';
 import Spinner from "@components/spinner/spinner";
 
 // Styles
@@ -11,14 +13,14 @@ import authStyles from './auth.scss';
 class Auth extends Component {
 
     componentDidMount() {
-        this.props.onAuthorize();
+        this.props.authorize();
     }
     
     render() {
         // Destructuting the props variable
         const { 
             children,
-            onRequestingLogin,
+            login: onRequestingLogin,
             user : {
                 isLoggedIn, 
                 isRejected, 
@@ -55,11 +57,13 @@ const propsMapper = state => {
     }
 }
 
-const actionsMapper = dispatch => {
-    return {
-        onAuthorize: () => usrActions.authorize(dispatch),
-        onRequestingLogin: () => usrActions.login(dispatch)
-    }
-}
+const actionsMapper = dispatch => bindActionCreators({ authorize, logIn }, dispatch)
+
+// const actionsMapper = dispatch => {
+//     return {
+//         onAuthorize: () => usrActions.authorize(dispatch),
+//         onRequestingLogin: () => usrActions.login(dispatch)
+//     }
+// }
 
 export default connect(propsMapper, actionsMapper)(Auth)

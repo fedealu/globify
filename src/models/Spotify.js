@@ -14,10 +14,24 @@ export default class Spotify {
         //this.access_token = token
     }
 
+    getTypes() {
+        return {
+            artists: 'artists',
+            albums: 'albums',
+            tracks: 'tracks',
+            playlist: 'playlists',
+            search: {
+                artist: 'artist',
+                album: 'album',
+                track: 'track',
+                playlist: 'playlist'
+            }
+        }
+    }
+
     getAlbumTracks(albumId) {
         return AuthModule.getToken()
             .then(ACCESS_TOKEN => {
-                console.log('going for data');
                 return new Promise((resolve, reject) => {
                     fetch(`${BASE_URL}albums/${albumId}/tracks`, {
                             headers: new Headers({
@@ -104,6 +118,6 @@ export default class Spotify {
 
     buildString(query, type, artist, album, song) {
         //TODO: FALTA COMPLETAR FUNCION DE ARMADO DE QUERY
-        return `${BASE_URL}search?q=${query}&type=artist`;
+        return `${BASE_URL}search?q=${query}&type=${type}`;
     }
 }

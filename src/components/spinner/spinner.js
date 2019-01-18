@@ -9,6 +9,10 @@ const spinner = (props) => {
         case 'sm':
             spinnerSize = styles.sm;
             break;
+        
+        case 'cover':
+            spinnerSize = styles.cover;
+            break;
     
         default:
             break;

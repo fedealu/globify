@@ -6,12 +6,14 @@ const { PATHS_ALIASES }  = require('./paths/paths');
 
 
 module.exports = {
+    context: path.join(__dirname, '../'),
     entry: {
         app: './src/index.js'
     },
     output: {
-        filename: '[name].[hash:base64:5].bundle.js',
-        path: path.resolve(__dirname, '/dist')
+        filename: 'app.bundle.js',
+        path: path.join(__dirname, '../dist'),
+        publicPath: '/'
     },
     module: {
         rules: [

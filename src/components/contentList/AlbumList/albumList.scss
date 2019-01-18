@@ -1,0 +1,8 @@
+@import '@styles/_utilities.scss';
+
+.albumList {
+    @include scrollBarStyled;
+    overflow: auto;
+    height: 100%;
+    position: relative;
+}

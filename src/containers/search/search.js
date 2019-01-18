@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Spinner from '@components/spinner/spinner';
 
 import searchStyles from './search.scss';
+import { newSearch } from '@actions/searchActions';
+
 import searchReducer from '../../store/reducers/searchReducer';
 import searchActions from '../../store/actions/searchActions';
+
 
 class Search extends PureComponent {
 
@@ -67,10 +71,12 @@ const propsMapper = state => {
   }
 }
 
-const actionsMapper = dispatch => {
-  return {
-    onNewSearch: searchTerm => searchActions.newSearch(dispatch, searchTerm)
-  }
-}
+const actionsMapper = dispatch => bindActionCreators({ onNewSearch: newSearch }, dispatch)
+// {
+  
+//   // return {
+//   //   onNewSearch: searchTerm => searchActions.newSearch(dispatch, searchTerm)
+//   // }
+// }
 
 export default connect( propsMapper, actionsMapper )(Search);

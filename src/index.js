@@ -1,9 +1,8 @@
 import React from 'react';
-import { createStore } from 'redux';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
-import combineReducers from '@store';
+import store from '@store';
 
 // Components
 import App from '@containers/App';
@@ -13,13 +12,8 @@ import Spinner from '@components/spinner/spinner';
 // General Styles
 import styles from '@styles/styles.scss';
 
-const store = createStore(
-    combineReducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
 document.addEventListener('click', (e) => {
-    if (e.target.nodeName === 'A') {
+    if (e.target.nodeName === 'A' && e.target.classList.contains('inner-link')) {
         e.preventDefault();
     }
 })

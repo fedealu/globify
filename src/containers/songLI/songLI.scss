@@ -1,0 +1,45 @@
+@import '@styles/_colors.scss';
+
+.song {
+    padding: .3rem;
+    border-bottom: 1px solid #444;
+    width: 100%;
+    color: $link-color;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+
+    p {
+        flex-grow: 1;
+        display: flex;
+        transition: color .3s;
+    }
+
+    &__title {
+        flex-grow: 1;
+    }
+
+    &__duration {
+        text-align: right;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &__actions {
+        margin-left: .5rem;
+        transition: color .3s;
+        font-size: .8em;
+        &:hover {
+            color: $gl-color;
+        }
+    }
+
+    &:hover,
+    &__selected {
+        p {
+            color: $link-color-hover;
+        }
+    }
+}

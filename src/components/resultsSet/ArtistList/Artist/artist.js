@@ -26,7 +26,6 @@ export default (props) => {
                 <span>|</span>
                 <a href={ artist.external_urls.spotify }>Ver en Spotify</a>
             </div>
-            
         </li>
     );
 }
