@@ -15,6 +15,8 @@ export const USER_ACTIONS = {
 }
 
 export const authorize = () => {
+
+    console.log('llegue');
     return (dispatch, getState) => {
         // Notifico al reducer que estoy solicitando autorización.
         dispatch({ type: USER_ACTIONS.userLogin.requesting });
@@ -26,6 +28,7 @@ export const authorize = () => {
                 dispatch({ type: USER_ACTIONS.userLogin.authorized, payload: { user } });
             })
             .catch(err => {
+                console.log('hubo un error');
                 // Hubo algún error en la autorización.
                 if (err.err_code === 1) {
                     // Usuario negó el acceso a la aplicación
@@ -46,47 +49,5 @@ export const logOut = () => {
 }
 
 export const logIn = () => {
-    return (dispatch, getState) => {
-            login: (dispatch, getState) => {
-            AuthModule.authorize();
-        }
-    }
+    AuthModule.authorize();
 }
-
-// const userActions = {
-
-//     names: ACTION_NAMES,
-
-//     authorize: (dispatch, getState) => {
-//         // Notifico al reducer que estoy solicitando autorización.
-//         dispatch({ type: ACTION_NAMES.userLogin.requesting });
-
-//         // Ejecuto autorizacion en el módulo
-//         AuthModule.isAuth()
-//             .then(user => {
-//                 // Se pasaron los pasos previos de la autorización.
-//                 dispatch({ type: ACTION_NAMES.userLogin.authorized, payload: { user } });
-//             })
-//             .catch(err => {
-//                 // Hubo algún error en la autorización.
-//                 if (err.err_code === 1) {
-//                     // Usuario negó el acceso a la aplicación
-//                     dispatch({ type: ACTION_NAMES.userLogin.rejected, payload: { err } });
-//                 } else {
-//                     // Hubo un error en la API
-//                     dispatch({ type: ACTION_NAMES.userLogin.failed, payload: { err } });
-//                 }
-                
-//             });
-//     },
-
-//     logOut: (dispatch, getState) => {
-//         console.log('You\'re logging out');
-//     },
-    
-//     login: (dispatch, getState) => {
-//         AuthModule.authorize();
-//     }
-// }
-
-// export default userActions;

@@ -20,7 +20,7 @@ class Auth extends Component {
         // Destructuting the props variable
         const { 
             children,
-            login: onRequestingLogin,
+            logIn: onRequestingLogin,
             user : {
                 isLoggedIn, 
                 isRejected, 
@@ -41,7 +41,7 @@ class Auth extends Component {
                 { alert }
                 <div className={ authStyles.Auth__login_form }>
                     <p>Debe iniciar sesión en Spotify para continuar.</p>
-                    <button onClick={ onRequestingLogin }>Quiero mi música ya!</button>
+                    <button onClick={ () => onRequestingLogin() }>Quiero mi música ya!</button>
                     { loader }
                 </div>
             </div>
@@ -57,13 +57,6 @@ const propsMapper = state => {
     }
 }
 
-const actionsMapper = dispatch => bindActionCreators({ authorize, logIn }, dispatch)
-
-// const actionsMapper = dispatch => {
-//     return {
-//         onAuthorize: () => usrActions.authorize(dispatch),
-//         onRequestingLogin: () => usrActions.login(dispatch)
-//     }
-// }
+const actionsMapper = dispatch => bindActionCreators({ authorize, logIn }, dispatch);
 
 export default connect(propsMapper, actionsMapper)(Auth)
