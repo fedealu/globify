@@ -77,6 +77,10 @@
         width: 100%;
         padding-left: 1rem;
 
+        ul {
+            max-height: 0px;
+        }
+
         &_header {
             display: flex;
             align-items: center;
@@ -106,6 +110,12 @@
         &:hover,
         &__selected {
             background-color: $bg-color;
+
+            &__open {
+                ul {
+                    max-height: 1000px;
+                }
+            }
         }
     }
 }
