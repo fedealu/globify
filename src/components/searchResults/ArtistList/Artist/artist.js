@@ -2,8 +2,8 @@ import React from 'react';
 
 import RoundedImg from '@components/roundedImg/roundedImg';
 
-import generalStyles from '@components/resultsSet/resultsStyles.scss';
-import artistStyles from '@components/resultsSet/ArtistList/Artist/artist.scss';
+import generalStyles from '@components/searchResults/resultsStyles.scss';
+import artistStyles from '@components/searchResults/ArtistList/Artist/artist.scss';
 
 export default (props) => {
     const { 

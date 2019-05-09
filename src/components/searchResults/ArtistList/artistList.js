@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Artist from '@components/resultsSet/ArtistList/Artist/artist';
+import Artist from '@components/searchResults/ArtistList/Artist/artist';
 
-import generalStyles from '@components/resultsSet/resultsStyles.scss';
+import generalStyles from '@components/searchResults/resultsStyles.scss';
 
 export default (props) => {
     const { artists } = props;

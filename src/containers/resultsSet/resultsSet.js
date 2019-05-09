@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import ArtistList from '@components/resultsSet/ArtistList/artistList';
+import ArtistList from '@components/searchResults/ArtistList/artistList';
 
 import resultsStyles from './resultsSet.scss';
 import searchActions, { SEARCH_ACTIONS } from '@actions/searchActions';
