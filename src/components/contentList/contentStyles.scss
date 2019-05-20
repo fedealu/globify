@@ -1,4 +1,5 @@
 @import '@styles/_colors.scss';
+@import '@styles/_utilities.scss';
 
 .results {
     display: flex;
@@ -77,10 +78,6 @@
         width: 100%;
         padding-left: 1rem;
 
-        ul {
-            max-height: 0px;
-        }
-
         &_header {
             display: flex;
             align-items: center;
@@ -110,10 +107,15 @@
         &:hover,
         &__selected {
             background-color: $bg-color;
+        }
 
+        &__selected {
             &__open {
                 ul {
-                    max-height: 1000px;
+                    max-height: 200px;
+                    overflow: auto;
+
+                    @include scrollBarStyled();
                 }
             }
         }

@@ -10,12 +10,13 @@
         align-items: center;
         position: relative;
         font-size: .9rem;
+        padding: $sidenav_padding;
 
         &::after {
             opacity: 0;
             content: '';
             position: absolute;
-            right: 0;
+            right: .5rem;
             border-right: 5px solid $gl-color;
             border-top: 5px solid $gl-color;
             border-bottom: 5px solid transparent;
@@ -26,7 +27,6 @@
     }
 
     li {
-        padding: $sidenav_padding;
         
         &.selected {
             background-color: $bg-color;
