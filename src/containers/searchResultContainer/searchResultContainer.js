@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import ArtistList from '@components/searchResults/ArtistList/artistList';
+import NoResults from '@components/noResults/noResults';
 
-import resultsStyles from './resultsSet.scss';
+import resultsStyles from './searchResultContainer.scss';
 import searchActions, { SEARCH_ACTIONS } from '@actions/searchActions';
 import { getArtistAlbums, RESULT_ACTIONS } from '@actions/resultsActions';
 
-class ResultsSet extends PureComponent {
+class SearchResultContainer extends PureComponent {
   render() {
     // Props destructuring
     const {
@@ -29,9 +30,10 @@ class ResultsSet extends PureComponent {
     // Build header
     const searchFor = ( isSearching || isFinished ) && term != '' ? ''.concat(` - `, term) : '';
     const header = <h1>{ `${ capitalize(type) }${ searchFor }` }</h1>;
+    console.log('results is: ', results);
 
-    let resultBuild = '';
-    if (results !== '') {
+    let resultBuild = (<NoResults></NoResults>);
+    if (results != '' && results.items.length > 0) {
       switch (type) {
         case SEARCH_ACTIONS.targets.search.artist:
             resultBuild = <ArtistList artists={ results.items } click={ onArtistClick } />
@@ -64,5 +66,5 @@ const propsMapper = state => {
 
 const actionsMapper = dispatch => bindActionCreators({ onArtistClick: getArtistAlbums }, dispatch);
 
-export default connect( propsMapper, actionsMapper )(ResultsSet)
+export default connect( propsMapper, actionsMapper )(SearchResultContainer)
 

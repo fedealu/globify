@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { searchTracks, songListDisplay } from "@actions/songActions";
+import { searchTracks } from "@actions/songActions";
 import RoundedImg from "@components/roundedImg/roundedImg";
 import Spinner from "@components/spinner/spinner";
 import SongLI from "@containers/songLI/songLI";
@@ -12,7 +12,6 @@ import contentStyles from "@components/contentList/contentStyles.scss";
 class AlbumLI extends PureComponent {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.searchTracks = this.props.searchTracks;
     this.album = this.props.album;
   }
@@ -51,22 +50,20 @@ class AlbumLI extends PureComponent {
 
       songList = (
         <div className={[contentStyles.results__songs, openSongList].join(" ")}>
-          <ul>{songs}</ul>
+          <ul className={contentStyles.results__songs__list}>{songs}</ul>
         </div>
       );
     }
 
-    console.log(selected, openSongList);
-
     return (
-      <li className={[contentStyles.results__list_item, selected].join(" ")}>
+      <li className={[contentStyles.results__list_item, selected].join(" ")} title={ this.album.name }>
         <div
           className={contentStyles.results__list_item_header}
           onClick={() => this.onClickHandler()}
         >
           <RoundedImg size="sm" img={img} />
           <div className={contentStyles.results__list_item_info}>
-            <h4>{this.album.name}</h4>
+            <h4>{ this.album.name }</h4>
             <small>
               {`${this.album.total_tracks}
                                 ${
@@ -111,7 +108,7 @@ const propsMapper = state => {
 };
 
 const actionsMapper = dispatch =>
-  bindActionCreators({ searchTracks, songListDisplay }, dispatch);
+  bindActionCreators({ searchTracks }, dispatch);
 
 export default connect(
   propsMapper,

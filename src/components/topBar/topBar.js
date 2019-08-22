@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Search from '@containers/search/search';
+import SearchContainer from '@containers/searchContainer/searchContainer';
 
 import topBarStyles from './topBar.scss';
 
@@ -14,7 +14,7 @@ export default (props) => {
             <div className={ topBarStyles.topbar__logo }>
                 { /* Logo */ }
             </div>
-            <Search />
+            <SearchContainer />
         </div>
     );
 }

@@ -13,7 +13,8 @@ module.exports = {
     output: {
         filename: 'app.bundle.js',
         path: path.join(__dirname, '../dist'),
-        publicPath: '/'
+        publicPath: '/',
+
     },
     module: {
         rules: [
@@ -40,7 +41,20 @@ module.exports = {
                     }
                 },
                 exclude: /(node_modules)/,
-            }
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                  'file-loader',
+                  {
+                    loader: 'image-webpack-loader',
+                    options: {
+                      bypassOnDebug: true, // webpack@1.x
+                      disable: true, // webpack@2.x and newer
+                    },
+                  },
+                ],
+              }
         ]
     },
     plugins: [

@@ -7,13 +7,13 @@ import { bindActionCreators } from 'redux';
 import { switchSearchObjective } from '@actions/searchActions';
 import { logOut } from '@actions/userActions';
 
-import sidenavStyles from './sidenav.scss';
+import sidenavStyles from './sidenavContainer.scss';
 import UserProfile from '@components/sidenav/userProfile/userProfile';
 import Navigation from '@components/sidenav/navigation/navigation';
 
 
 
-class Sidenav extends PureComponent {
+class SidenavContainer extends PureComponent {
 
   render() {
     const { 
@@ -42,17 +42,11 @@ const propsMapper = state => {
         user: state.userReducer.user,
         searchTarget: state.searchReducer.searchTarget
     }
-}
+};
 
 const actionsMapper = dispatch => bindActionCreators(
         { onLogOut: logOut, onNavClick: switchSearchObjective }, 
         dispatch
-    )
-// {
-//     return {
-//         onLogOut: () => UserActions.logOut(dispatch),
-//         onNavClick: ( newObj ) => SearchActions.switchSearchObjective(dispatch, newObj)
-//     }
-// }
+    );
 
-export default connect(propsMapper, actionsMapper)(Sidenav);
+export default connect(propsMapper, actionsMapper)(SidenavContainer);

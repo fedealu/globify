@@ -1,4 +1,5 @@
 import React from 'react';
+import noImage from '@img/no_image.png';
 
 import styles from './roundedImg.scss';
 
@@ -26,7 +27,7 @@ export default (props) => {
 
     return (
         <div className={ classes }>
-            <img src={ img.url || '@assets/img/artist.jpg' } alt={ img.alt || 'Este usuario no tiene imagen de perfil'}/>
+            <img src={ img && img.url || noImage } alt={ img && img.alt || 'Este usuario no tiene imagen de perfil'}/>
         </div>
     );
 }

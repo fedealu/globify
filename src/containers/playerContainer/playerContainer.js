@@ -5,9 +5,9 @@ import { bindActionCreators} from 'redux';
 import Icon from '@components/icon/icon'
 import { resumeSong, pauseSong } from '@actions/playerActions';
 
-import playerStyles from './player.scss';
+import playerStyles from './playerContainer.scss';
 
-class Player extends PureComponent {
+class PlayerContainer extends PureComponent {
   render() {
 
     const {
@@ -70,4 +70,4 @@ const mapStateToActions = dispatch => bindActionCreators({  onPlayHandler: resum
                                                             onPauseHandler: pauseSong }, 
                                                             dispatch)
 
-export default connect(mapStateToProps, mapStateToActions)(Player)
+export default connect(mapStateToProps, mapStateToActions)(PlayerContainer)

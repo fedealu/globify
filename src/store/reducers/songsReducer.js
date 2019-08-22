@@ -4,7 +4,7 @@ const initialState = {
   isSearching: false,
   isError: false,
   isFinished: false,
-  isShowingSongList: false,
+  isShowingSongsList: false,
   searchTarget: {
     album: "",
     results: "",

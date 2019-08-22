@@ -6,7 +6,7 @@ import store from '@store';
 
 // Components
 import App from '@containers/App';
-import Auth from '@containers/auth/auth';
+import AuthContainer from '@containers/authContainer/authContainer';
 import Spinner from '@components/spinner/spinner';
 
 // General Styles
@@ -22,9 +22,9 @@ document.querySelector('#root').classList.add(styles.root);
 
 ReactDOM.render(
     <Provider store={ store }>
-        <Auth>
+        <AuthContainer>
             <App />
-        </Auth>
+        </AuthContainer>
     </Provider>,
     document.querySelector('#root')
 )

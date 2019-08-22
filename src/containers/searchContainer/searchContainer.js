@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 
 import Spinner from '@components/spinner/spinner';
 
-import searchStyles from './search.scss';
+import searchStyles from './SearchContainer.scss';
 import { newSearch } from '@actions/searchActions';
 
 import searchReducer from '../../store/reducers/searchReducer';
 import searchActions from '../../store/actions/searchActions';
 
 
-class Search extends PureComponent {
+class SearchContainer extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -72,11 +72,5 @@ const propsMapper = state => {
 }
 
 const actionsMapper = dispatch => bindActionCreators({ onNewSearch: newSearch }, dispatch)
-// {
-  
-//   // return {
-//   //   onNewSearch: searchTerm => searchActions.newSearch(dispatch, searchTerm)
-//   // }
-// }
 
-export default connect( propsMapper, actionsMapper )(Search);
+export default connect( propsMapper, actionsMapper )(SearchContainer);

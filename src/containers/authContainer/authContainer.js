@@ -8,9 +8,9 @@ import { logIn, authorize } from '@actions/userActions';
 import Spinner from "@components/spinner/spinner";
 
 // Styles
-import authStyles from './auth.scss';
+import authStyles from './authContainer.scss';
 
-class Auth extends Component {
+class AuthContainer extends Component {
 
     componentDidMount() {
         this.props.authorize();
@@ -28,7 +28,7 @@ class Auth extends Component {
                 }
             } = this.props;
         
-        const alert = isRejected ? (<div className="alert error">No iniciaste sesión en Spotify. No podremos reproducir música para vos.</div>) : '';
+        const alert = isRejected ? (<div className="alert error">No iniciaste sesión en Spotify. No podremos reproducir tu música.</div>) : '';
 
         const loader = isRequesting ? <Spinner /> : '';
 
@@ -59,4 +59,4 @@ const propsMapper = state => {
 
 const actionsMapper = dispatch => bindActionCreators({ authorize, logIn }, dispatch);
 
-export default connect(propsMapper, actionsMapper)(Auth)
+export default connect(propsMapper, actionsMapper)(AuthContainer)

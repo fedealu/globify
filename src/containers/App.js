@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 
-import Sidenav from '@containers/sidenav/sidenav';
-import ResultsSet from '@containers/resultsSet/resultsSet';
+import SidenavContainer from '@containers/sidenavContainer/sidenavContainer';
+import SearchResultContainer from '@containers/searchResultContainer/searchResultContainer';
 import ContentList from '@containers/contentList/contentList';
 import TopBar from '@components/topBar/topBar';
-import Player from '@containers/player/player';
+import PlayerContainer from '@containers/playerContainer/playerContainer';
 
 
 import appStyles from './App.scss';
@@ -14,11 +14,11 @@ class App extends PureComponent {
     render() {
         return (
             <div className={ appStyles.App }>
-                <Sidenav />
+                <SidenavContainer />
                 <TopBar />
-                <ResultsSet />
+                <SearchResultContainer />
                 <ContentList />
-                <Player />
+                <PlayerContainer />
             </div>
         )
     }
